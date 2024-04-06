@@ -60,8 +60,8 @@ const Nav = () => {
             { text: "Services", href: "/services" },
             { text: "Contact Us", href: "mailto:Odufowokelateef6@gmail.com" },
           
-        ].map((item) => (
-          <Link to={item.href}>
+        ].map((item, index) => (
+          <Link to={item.href} key={index}>
             <Text
               fontSize="16px"
               transition="0.5s"
