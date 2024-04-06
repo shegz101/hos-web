@@ -8,8 +8,8 @@ import tuberculosis from "../assets/Tuberculosis.svg";
 
 const Services = () => {
   return (
-    <Box mt="15px" mx={{base: "15px", md: "100px"}}>
-        <Text textAlign={"center"} fontWeight={"bold"} mb={"15px"} fontSize={{ base:"20px", md:"35px"}} color="#000000">Our Services</Text>
+    <Box id="services" mt="40px" mx={{base: "15px", md: "100px"}}>
+        <Text textAlign={"center"} fontWeight={"600"} mb={"15px"} fontSize={{ base:"20px", md:"30px"}} color="#000000">Our Services</Text>
         <Flex flexDirection={{base:"column", md:"row"}} flexWrap={"wrap"} justifyContent={"space-between"} alignItems={"center"} gap={"20px"}>
           {[
             {img: medicalIcon,  title:"Physical Health", description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"},
