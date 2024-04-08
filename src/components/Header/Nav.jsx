@@ -1,4 +1,4 @@
-import { Box, Flex, Text, useDisclosure, useMediaQuery } from "@chakra-ui/react";
+import { Box, Flex, Text, Button, useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import { Link as RouterLink, Link } from "react-router-dom";
 import { useRef } from "react";
 import { HiOutlineMenu } from "react-icons/hi";
@@ -110,8 +110,7 @@ const Nav = () => {
         justifyContent={"flex-end"}
         >
           <Link to="mailto:Odufowokelateef6@gmail.com" style={{ outline:"none"}}>
-            <Box
-            as={"Button"}
+            <Button
             p="13px 28px"
             w="max-content"
             h="48px"
@@ -125,7 +124,7 @@ const Nav = () => {
             fontSize={{base: "13px", md: "16px"}}
             >
               Book an Appointment
-            </Box>
+            </Button>
           </Link>
         </Flex>
         {/* Sidebar */}
