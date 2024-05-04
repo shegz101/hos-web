@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 import { Box, Flex, Text, Input, Textarea, Button } from "@chakra-ui/react";
 import contactImage from "../assets/ContactUs.svg";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactUs = () => {
   const form = useRef();
@@ -24,7 +26,7 @@ const ContactUs = () => {
     e.preventDefault();
 
     if (formData.user_name === '' || formData.user_email === '' || formData.subject === '' || formData.message === '') {
-      alert("Please fill in all fields!");
+      toast.error("Please fill in all fields!");
       return;
     } else {
       emailjs
@@ -33,10 +35,10 @@ const ContactUs = () => {
       })
       .then(
         () => {
-          console.log('SUCCESS!');
+          toast.success("Successfully");
         },
         (error) => {
-          console.log('FAILED...', error.text);
+          toast.error('FAILED...', error.text)
         },
       );
     }

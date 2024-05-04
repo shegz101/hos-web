@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { HiOutlineMenu } from "react-icons/hi";
 import logo from "../../assets/BEEBATLOGO2.svg"
 import DrawerNav from "./DrawerNav";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Nav = () => {
   const servicesRef = useRef(null);
@@ -14,7 +16,7 @@ const Nav = () => {
     window.scrollTo({
       top: ref.current.offsetTop,
       behavior: "smooth",
-    });
+    }); 
   };
 
   const { isOpen: drawerIsOpen, onOpen: drawerOnOpen, onClose: drawerOnclose } = useDisclosure();
@@ -43,6 +45,18 @@ const Nav = () => {
         border={"1px solid #EFF4FF"}
         borderBottom={"none"}
       >
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <Flex
           as="nav"
           color="#43413A"
