@@ -1,7 +1,9 @@
+import { useRef } from "react";
 import { Box, Flex, Text, Input, Textarea, Button } from "@chakra-ui/react";
 import contactImage from "../assets/ContactUs.svg";
 
 const ContactUs = () => {
+  const form = useRef();
   return (
     <Flex id="contact" mx={{ base: "15px", md: "100px" }} gap={{ base: "20px", md: "40px" }} mt="40px" flexDirection={{ base: "column", md: "row" }} alignItems="center" justifyContent="space-between">
       {/* Left Column for Image */}
@@ -18,8 +20,8 @@ const ContactUs = () => {
 
         {/* Lorem Ipsum Text */}
         <Text color="#000000" mb="20px">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore 
+          Your gateway to connecting with our healthcare experts and support staff. Whether you have questions about our services, 
+          need assistance with appointments, or wish to provide feedback, we're here to help.
         </Text>
 
         {/* Form */}

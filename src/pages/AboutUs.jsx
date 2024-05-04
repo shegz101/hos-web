@@ -9,13 +9,12 @@ const AboutUs = () => {
           About Us
         </Text>
         <Flex gap="40px" w="100%" flexDirection={{ base: "column", md: "row" }} justifyContent="space-between">
-          <Flex width={{ base: "100%", md: "calc(45% - 20px)" }} gap="15px" alignItems={"center"} flexDirection={"column"} pr={{ base: "0", md: "20px" }}>
-            <Text textAlign="center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+          <Flex mt="20px" width={{ base: "100%", md: "calc(45% - 20px)" }} gap="15px" alignItems={"center"} flexDirection={"column"} pr={{ base: "0", md: "20px" }}>
+            <Text textAlign="justify">
+              At <span style={{ color:"#0085FF"}}>Beebat Medical Center</span>, our objective is to provide excellent medical care using advanced technology 
+              and highly skilled professionals. We are committed to delivering compassionate and innovative healthcare 
+              services to our community, embodying values of integrity and care.
             </Text>
-
             <Box
             as={"Button"}
             p="13px 28px"

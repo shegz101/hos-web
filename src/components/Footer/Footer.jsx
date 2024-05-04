@@ -2,6 +2,7 @@ import { Box, Text, Flex, Grid } from "@chakra-ui/react";
 import { useRef } from "react";
 import logo from "../../assets/BEEBATLOGO2.svg";
 import { Link } from "react-router-dom";
+import { MdOutlineCallEnd, MdMailOutline, MdEventAvailable, MdLocationPin } from "react-icons/md";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -56,10 +57,29 @@ const Footer = () => {
             </Link>
           </Box>
           <Text pt="10px" color="#000000" fontWeight="500">
-            2, Jimoh - Ojora Street, Off Ojo Road,<br/>
-            Ajegunle Apapa, Lagos, Nigeria<br/>
-            lateef.odufowoke@yahoo.com<br/>
-            08033038477, 08098038477
+            <Flex gap="5px">
+              <Box pt="3px"><MdLocationPin/></Box>
+              <Text>
+                2, Jimoh - Ojora Street, Off Ojo Road,<br/>
+                Ajegunle Apapa, Lagos, Nigeria
+              </Text>
+              <Text></Text>
+            </Flex>
+           
+            <Flex gap="5px">
+              <Box pt="3px"><MdMailOutline /> </Box>
+              <Text>lateef.odufowoke@yahoo.com</Text>
+            </Flex>
+
+            <Flex gap="5px">
+              <Box pt="3px"><MdOutlineCallEnd /> </Box>
+              <Text>08033038477, 08098038477</Text>
+            </Flex>
+
+            <Flex gap="5px">
+              <Box pt="3px"><MdEventAvailable /> </Box>
+              <Text>Open: Mon to Sun: 24hours</Text>
+            </Flex>
           </Text>
         </Box>
 
