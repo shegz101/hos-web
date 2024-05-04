@@ -1,6 +1,5 @@
 import { Box, Flex, Text, Button, useDisclosure, useMediaQuery } from "@chakra-ui/react";
 import { Link as RouterLink, Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
 import { useRef } from "react";
 import { HiOutlineMenu } from "react-icons/hi";
 import logo from "../../assets/BEEBATLOGO2.svg"
@@ -18,11 +17,6 @@ const Nav = () => {
     });
   };
 
-  const handleMail = (e) => {
-    e.preventDefault();
-    toast("Mail successfully sent!")
-  }
-
   const { isOpen: drawerIsOpen, onOpen: drawerOnOpen, onClose: drawerOnclose } = useDisclosure();
   const [isLargerThan600] = useMediaQuery('(max-width: 1200px)');
   const currentPath = window.location.pathname;
@@ -33,19 +27,6 @@ const Nav = () => {
 
   return (
     <>
-      <ToastContainer
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-      // transition: Bounce,
-      />
       <Box
         position="fixed"
         top={"0"}
