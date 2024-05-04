@@ -1,9 +1,29 @@
 import { useRef } from "react";
+import emailjs from '@emailjs/browser';
 import { Box, Flex, Text, Input, Textarea, Button } from "@chakra-ui/react";
 import contactImage from "../assets/ContactUs.svg";
 
 const ContactUs = () => {
   const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_img0y2r', 'template_z11yo8i', form.current, {
+        publicKey: 'BCvseqzBryJh7ElBH',
+      })
+      .then(
+        () => {
+          alert('SUCCESS!');
+        },
+        (error) => {
+          alert('FAILED...', error.text);
+        },
+    );
+    e.target.reset();
+  };
+
   return (
     <Flex id="contact" mx={{ base: "15px", md: "100px" }} gap={{ base: "20px", md: "40px" }} mt="40px" flexDirection={{ base: "column", md: "row" }} alignItems="center" justifyContent="space-between">
       {/* Left Column for Image */}
@@ -25,36 +45,36 @@ const ContactUs = () => {
         </Text>
 
         {/* Form */}
-        <Box as="form">
+        <Box as="form" ref={form} onSubmit={sendEmail}>
           {/* Name Input */}
           <Box mb="15px">
             <Text fontWeight="medium">Name</Text>
-            <Input type="text" bg={"#DCE7F2"} placeholder="Enter your name" />
-          </Box>
-
-          {/* Phone Number Input */}
-          <Box mb="15px">
-            <Text fontWeight="medium">Phone Number</Text>
-            <Input type="tel" bg={"#DCE7F2"} placeholder="Enter your phone number" />
+            <Input type="text" bg={"#DCE7F2"} name="user_name" placeholder="Enter your name" />
           </Box>
 
           {/* Email Address Input */}
           <Box mb="15px">
             <Text fontWeight="medium">Email Address</Text>
-            <Input type="email" bg={"#DCE7F2"} placeholder="Enter your email address" />
+            <Input type="email" bg={"#DCE7F2"} name="user_email" placeholder="Enter your email address" />
+          </Box>
+
+          {/* Subject Input */}
+          <Box mb="15px">
+            <Text fontWeight="medium">Subject</Text>
+            <Input type="text" bg={"#DCE7F2"} name="subject" placeholder="Enter the subject/title of your mail" />
           </Box>
 
           {/* Message Input */}
           <Box mb="15px">
             <Text fontWeight="medium">Message</Text>
-            <Textarea bg={"#DCE7F2"} placeholder="Enter your message" resize="vertical" />
+            <Textarea bg={"#DCE7F2"} placeholder="Enter your message" name="message"  resize="vertical" />
           </Box>
 
           {/* Submit Button */}
           <Button w="100%" mt="10px" bg="#0085FF" color={"white"} borderRadius={"5px"} type="submit">Send</Button>
         </Box>
       </Box>
-    </Flex>
+    </Flex> 
   );
 };
 
