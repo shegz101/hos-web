@@ -12,7 +12,7 @@ const Services = () => {
   return (
     <Box id="services" mt="40px" mx={{base: "15px", md: "100px"}}>
         <Text textAlign={"center"} fontWeight={"600"} mb={"15px"} fontSize={{ base:"20px", md:"30px"}} color="#000000">Our <span style={{ color:"#0085FF"}}>Services</span></Text>
-        <Flex flexDirection={{base:"column", md:"row"}} flexWrap={"wrap"} justifyContent="center" gap={"30px 45px"}>
+        <Flex flexDirection={{base:"column", md:"row"}} flexWrap={"wrap"} justifyContent="center" gap={"30px 45px"} alignItems={"center"}>
           {[
             {img: familyMedicine,  title:"Family Medicine", description:"Our Family Medicine department offers comprehensive primary care for patients of all ages, focusing on preventive health measures, routine check-ups, and managing chronic conditions with personalized care plans tailored to each family member's needs."},
             {img: antenatalCare,  title:"Antenatal care & Delivery", description:"Our Antenatal Care and Delivery services are designed to support expecting mothers through every stage of pregnancy, ensuring a safe and comfortable journey from prenatal care to labor and delivery, with a dedicated team of obstetricians and specialists."},
