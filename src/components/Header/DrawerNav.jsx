@@ -56,15 +56,14 @@ const DrawerNav = ({ drawerOnClose, drawerIsOpen }) => {
                         { text: "Contact Us", href: "#contact", adr:"/#contact", ref: contactUsRef },
                     
                         ].map((item, index) => (
-                        <Link key={index} to={item.href} onClick={(e) => {
-                  scrollToRef(item.ref);
-                }}>
+                        <Link key={index} to={item.href} onClick={() => scrollToRef(item.ref)}>
                             <Text
                                 mt={{base: "31px", md: "42px"}}  
                                 fontSize={{md: "20px"}}  
                                 transition="0.5s"
                                 fontWeight={"400"}
                                 color={"#000000"}
+                                onClick={drawerOnClose}
                             >
                                 {item.text}
                             </Text>
