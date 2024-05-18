@@ -57,8 +57,6 @@ const DrawerNav = ({ drawerOnClose, drawerIsOpen }) => {
                     
                         ].map((item, index) => (
                         <Link key={index} to={item.href} onClick={(e) => {
-                  e.preventDefault();
-                  drawerOnClose
                   scrollToRef(item.ref);
                 }}>
                             <Text
