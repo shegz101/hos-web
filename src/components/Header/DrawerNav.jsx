@@ -24,14 +24,6 @@ const DrawerNav = ({ drawerOnClose, drawerIsOpen }) => {
     drawerOnClose
   };
 
-  
-  const handleLinkClick = (ref) => {
-    if (ref !== null) {
-        scrollToRef(ref);
-    }
-    drawerOnClose
-  };
-
     return (
         <Drawer onClose={drawerOnClose}  placement="top" isOpen={drawerIsOpen} size={{base: "sm", md: "sm"}} >
             <DrawerOverlay />
@@ -75,7 +67,7 @@ const DrawerNav = ({ drawerOnClose, drawerIsOpen }) => {
                             <Box
                             as={"Button"}
                             p="13px 28px"
-                            w="200px"
+                            w="max-content"
                             h="48px"
                             borderRadius="11px"
                             cursor={{base: "default", md: "pointer"}}
