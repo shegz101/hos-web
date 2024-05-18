@@ -1,8 +1,8 @@
 import { Box, Flex, Text, Button, useDisclosure, useMediaQuery } from "@chakra-ui/react";
-import { Link as RouterLink, Link } from "react-router-dom";
-import { useRef } from "react";
+import { Link as RouterLink, Link, useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { HiOutlineMenu } from "react-icons/hi";
-import logo from "../../assets/BEEBATLOGO2.svg"
+import logo from "../../assets/BEEBATLOGO2.svg";
 import DrawerNav from "./DrawerNav";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,21 +11,58 @@ const Nav = () => {
   const servicesRef = useRef(null);
   const aboutUsRef = useRef(null);
   const contactUsRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const scrollToRef = (ref) => {
     window.scrollTo({
       top: ref.current.offsetTop,
       behavior: "smooth",
-    }); 
+    });
+    updateURL(ref);
   };
 
-  const { isOpen: drawerIsOpen, onOpen: drawerOnOpen, onClose: drawerOnclose } = useDisclosure();
+  const updateURL = (ref) => {
+    const sectionOffsets = {
+      services: servicesRef.current.offsetTop,
+      about: aboutUsRef.current.offsetTop,
+      contact: contactUsRef.current.offsetTop,
+    };
+
+    const scrollY = window.scrollY + 200; // Adjust for nav height
+    let newPath = "/";
+
+    if (scrollY >= sectionOffsets.contact) {
+      newPath = "/#contact";
+    } else if (scrollY >= sectionOffsets.services) {
+      newPath = "/#services";
+    } else if (scrollY >= sectionOffsets.about) {
+      newPath = "/#about";
+    }
+
+    if (location.pathname + location.hash !== newPath) {
+      navigate(newPath);
+    }
+  };
+
+  const { isOpen: drawerIsOpen, onOpen: drawerOnOpen, onClose: drawerOnClose } = useDisclosure();
   const [isLargerThan600] = useMediaQuery('(max-width: 1200px)');
   const currentPath = window.location.pathname;
 
   const handleDrawer = () => {
     drawerOnOpen();
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      updateURL();
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [location]);
 
   return (
     <>
@@ -67,9 +104,9 @@ const Nav = () => {
         >
           <Box flex="0.7">
             <Box flex="1">
-              <Link to="/">
-                <Box as="img" src={logo} w={{base:"140px", md:"150px"}} alt="Beebat Logo" />
-              </Link>
+              <RouterLink to="/">
+                <Box as="img" src={logo} w={{ base: "140px", md: "150px" }} alt="Beebat Logo" />
+              </RouterLink>
             </Box>
           </Box>
           <Flex
@@ -94,10 +131,10 @@ const Nav = () => {
             display={{ base: "none", lg: "flex" }}
           >
             {[
-              { text: "Home", href: "/", adr:"/" },
-              { text: "About Us", href: "#about", adr:"/about", ref: aboutUsRef },
-              { text: "Services", href: "#services", adr:"/services",  ref: servicesRef },
-              { text: "Contact Us", href: "#contactUs", adr:"/contactUs", ref: contactUsRef },
+              { text: "Home", href: "/", adr: "/" },
+              { text: "About Us", href: "#about", adr: "/#about", ref: aboutUsRef },
+              { text: "Services", href: "#services", adr: "/#services", ref: servicesRef },
+              { text: "Contact Us", href: "#contactUs", adr: "/#contact", ref: contactUsRef },
             ].map((item, index) => (
               <RouterLink
                 to={item.adr}
@@ -108,7 +145,6 @@ const Nav = () => {
                   fontSize="16px"
                   transition="0.5s"
                   fontWeight="400"
-                  color={(currentPath === item.adr) ? "#0085FF" : "#040E22"}
                   p="10px"
                 >
                   {item.text}
@@ -118,32 +154,31 @@ const Nav = () => {
           </Flex>
 
           <Flex
-          gap="58px"
-          alignItems="center"
-          display={{ base: "none", lg: "flex" }}
-          flex="0.7"
-          justifyContent={"flex-end"}
+            gap="58px"
+            alignItems="center"
+            display={{ base: "none", lg: "flex" }}
+            flex="0.7"
+            justifyContent={"flex-end"}
           >
-            <Link to="mailto:Odufowokelateef6@gmail.com" style={{ outline:"none"}}>
+            <Link to="mailto:Odufowokelateef6@gmail.com" style={{ outline: "none" }}>
               <Button
-              p="13px 28px"
-              w="max-content"
-              h="48px"
-              borderRadius="11px"
-              cursor={{base: "default", md: "pointer"}}
-              bg="#0085FF"
-              transition={"0.5s ease"}
-              color="white"
-              _hover={{opacity:"0.8"}}
-              fontWeight={"500"}
-              fontSize={{base: "13px", md: "16px"}}
+                p="13px 28px"
+                w="max-content"
+                h="48px"
+                borderRadius="11px"
+                cursor={{ base: "default", md: "pointer" }}
+                bg="#0085FF"
+                transition={"0.5s ease"}
+                color="white"
+                _hover={{ opacity: "0.8" }}
+                fontWeight={"500"}
+                fontSize={{ base: "13px", md: "16px" }}
               >
                 Book an Appointment
               </Button>
             </Link>
           </Flex>
-          {/* Sidebar */}
-          {isLargerThan600 ? <DrawerNav drawerOnClose={drawerOnclose} drawerIsOpen={drawerIsOpen} /> : ""}
+          {isLargerThan600 ? <DrawerNav drawerOnClose={drawerOnClose} drawerIsOpen={drawerIsOpen} /> : ""}
         </Flex>
       </Box>
     </>

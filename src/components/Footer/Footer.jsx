@@ -1,12 +1,10 @@
 import { Box, Text, Flex, Grid } from "@chakra-ui/react";
 import { useRef } from "react";
 import logo from "../../assets/BEEBATLOGO2.svg";
-import { Link } from "react-router-dom";
+import { Link as RouterLink, Link } from "react-router-dom";
 import { MdOutlineCallEnd, MdMailOutline, MdEventAvailable, MdLocationPin } from "react-icons/md";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   const servicesRef = useRef(null);
   const aboutUsRef = useRef(null);
   const contactUsRef = useRef(null);
@@ -15,26 +13,24 @@ const Footer = () => {
     window.scrollTo({
       top: ref.current.offsetTop,
       behavior: "smooth",
-    });
+    }); 
   };
-
-  const hospital = [
-    { name: "About Us", url: "#about", ref: aboutUsRef },
-    { name: "Our Services", url: "#services", ref: servicesRef },
-  ];
-
-  const contact = [{ name: "Contact Us", url: "#contact", ref: contactUsRef }];
 
   const sections = [
     {
       title: "Hospital",
-      item: hospital,
+      items: [
+        { name: "About Us", url: "/#about", href: "#about", ref: aboutUsRef },
+        { name: "Our Services", url: "/#services", href: "#services", ref: servicesRef },
+      ],
     },
     {
       title: "Contact",
-      item: contact,
+      items: [{ name: "Contact Us", url: "/#contact", href: "#contactUs", ref: contactUsRef }],
     },
   ];
+
+  const currentYear = new Date().getFullYear();
 
   return (
     <Box
@@ -58,27 +54,23 @@ const Footer = () => {
           </Box>
           <Text pt="10px" color="#000000" fontWeight="500">
             <Flex gap="5px">
-              <Box pt="3px"><MdLocationPin/></Box>
+              <Box pt="3px"><MdLocationPin /></Box>
               <Text>
-                2, Jimoh - Ojora Street, Off Ojo Road,<br/>
+                2, Jimoh - Ojora Street, Off Ojo Road,<br />
                 Ajegunle Apapa, Lagos, Nigeria
               </Text>
-              <Text></Text>
             </Flex>
-           
             <Flex gap="5px">
-              <Box pt="3px"><MdMailOutline /> </Box>
+              <Box pt="3px"><MdMailOutline /></Box>
               <Text>lateef.odufowoke@yahoo.com</Text>
             </Flex>
-
             <Flex gap="5px">
-              <Box pt="3px"><MdOutlineCallEnd /> </Box>
+              <Box pt="3px"><MdOutlineCallEnd /></Box>
               <Text>08033038477, 08098038477</Text>
             </Flex>
-
             <Flex gap="5px">
-              <Box pt="3px"><MdEventAvailable /> </Box>
-              <Text>Open: Mon to Sun: 24hours</Text>
+              <Box pt="3px"><MdEventAvailable /></Box>
+              <Text>Open: Mon to Sun: 24 hours</Text>
             </Flex>
           </Text>
         </Box>
@@ -86,33 +78,27 @@ const Footer = () => {
         <Grid
           templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }}
           gap={{ base: "40px", md: "150px" }}
-          mt={{ base:"20px", md:"0px"}}
+          mt={{ base: "20px", md: "0px" }}
         >
           {sections.map((section, index) => (
             <Box key={index}>
-              <Text color="#000000" fontSize={{ base: "16px", md: "20px" }} fontWeight="700" mb={"16px"}>
+              <Text color="#000000" fontSize={{ base: "16px", md: "20px" }} fontWeight="700" mb="16px">
                 {section.title}
               </Text>
-
               <Flex flexDirection="column" gap="15px">
-                {section.item.map((link, index) => (
+                {section.items.map((item, index) => (
                   <Box key={index}>
-                    <Link to={link.url}>
+                    <RouterLink to={item.url} onClick={() => scrollToRef(item.ref)}>
                       <Text
-                        as="a"
-                        href={link.url}
-                        color={"#000000"}
+                        color="#000000"
                         fontWeight="400"
-                        // w="fit-content"
                         fontSize={{ s: "14px", md: "16px" }}
                         cursor="pointer"
                         transition="0.5s ease"
-                        onClick={() => scrollToRef(link.ref)}
-                        // _hover={{ color: 'gold.200', boxShadow: 'inset -50px 0 0 0 #766B38' }}
                       >
-                        {link.name}
+                        {item.name}
                       </Text>
-                    </Link>
+                    </RouterLink>
                   </Box>
                 ))}
               </Flex>
@@ -121,8 +107,8 @@ const Footer = () => {
         </Grid>
       </Flex>
 
-      <Flex pt="32px" gap="17px" mx={"30px"} justifyContent={"space-between"} alignItems="center" flexDirection="column">
-        <Text color="#000000" fontSize={{ s: "14px", md: "15px" }} fontWeight={"400"}>
+      <Flex pt="32px" gap="17px" mx="30px" justifyContent="space-between" alignItems="center" flexDirection="column">
+        <Text color="#000000" fontSize={{ s: "14px", md: "15px" }} fontWeight="400">
           Copyright © {currentYear} Beebat Medical Centre. All rights reserved.
         </Text>
       </Flex>

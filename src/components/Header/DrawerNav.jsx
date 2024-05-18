@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import {
      Drawer, Flex, Text,
     DrawerBody,
@@ -12,6 +12,26 @@ import { AiOutlineClose } from "react-icons/ai"
 
 
 const DrawerNav = ({ drawerOnClose, drawerIsOpen }) => {
+  const servicesRef = useRef(null);
+  const aboutUsRef = useRef(null);
+  const contactUsRef = useRef(null);
+
+  const scrollToRef = (ref) => {
+    window.scrollTo({
+      top: ref.current.offsetTop,
+      behavior: "smooth",
+    }); 
+    drawerOnClose
+  };
+
+  
+  const handleLinkClick = (ref) => {
+    if (ref !== null) {
+        scrollToRef(ref);
+    }
+    drawerOnClose
+  };
+
     return (
         <Drawer onClose={drawerOnClose}  placement="top" isOpen={drawerIsOpen} size={{base: "sm", md: "sm"}} >
             <DrawerOverlay />
@@ -30,13 +50,17 @@ const DrawerNav = ({ drawerOnClose, drawerIsOpen }) => {
                 </Flex>
                 <DrawerBody  color="#43413A" textAlign={"left"} pb="37px">
                     {[
-                        { text: "Home", href: "/" },
-                        { text: "About Us", href: "#" },
-                        { text: "Services", href: "#" },
-                        { text: "Contact Us", href: "mailto:Odufowokelateef6@gmail.com" },
+                        { text: "Home", href: "/", adr:"/" },
+                        { text: "About Us", href: "#about", adr:"/#about", ref: aboutUsRef },
+                        { text: "Services", href: "#services", adr:"/#services", ref: servicesRef },
+                        { text: "Contact Us", href: "#contact", adr:"/#contact", ref: contactUsRef },
                     
                         ].map((item, index) => (
-                        <Link key={index} to={item.href} onClick={drawerOnClose}>
+                        <Link key={index} to={item.href} onClick={(e) => {
+                  e.preventDefault();
+                  drawerOnClose
+                  scrollToRef(item.ref);
+                }}>
                             <Text
                                 mt={{base: "31px", md: "42px"}}  
                                 fontSize={{md: "20px"}}  
