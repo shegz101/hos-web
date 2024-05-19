@@ -3,7 +3,7 @@ import aboutImg from "../assets/AboutUs.svg";
 
 const AboutUs = () => {
   return (
-    <Box id="about" mt="40px" py={"35px"} width="100%" bg="#DCE7F2">
+    <Box id="about" mt="40px" py={"35px"} width="100%" bg="#DCE7F2" style={{ scrollMarginTop:"100px"}}>
       <Box mx={{base:"15px", md:"100px"}}>
         <Text textAlign="center" fontWeight="600" mb="15px" fontSize={{ base: "20px", md: "30px" }} color="#000000">
           About Us

@@ -55,7 +55,7 @@ const ContactUs = () => {
   const isDisabled = Object.values(formData).some((value) => value === '');
 
   return (
-    <Flex id="contact" mx={{ base: "15px", md: "100px" }} gap={{ base: "20px", md: "40px" }} mt="40px" flexDirection={{ base: "column", md: "row" }} alignItems="center" justifyContent="space-between">
+    <Flex id="contact" style={{ scrollMarginTop:"100px"}} mx={{ base: "15px", md: "100px" }} gap={{ base: "20px", md: "40px" }} mt="40px" flexDirection={{ base: "column", md: "row" }} alignItems="center" justifyContent="space-between">
       {/* Left Column for Image */}
       <Flex width={{ base: "100%", md: "calc(55% - 20px)" }} display={{base:"none", md:"block"}} pl={{ base: "0", md: "20px" }} alignItems="center">
           <Box as="img" src={contactImage} borderRadius={"20px"} alt="Contact Us Image" w="100%" h="500px" objectFit="cover" />

@@ -1,49 +1,46 @@
 import { Box, Flex, Text, Button, useDisclosure, useMediaQuery } from "@chakra-ui/react";
-import { Link as RouterLink, Link, useNavigate, useLocation } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { Link as RouterLink, Link } from "react-router-dom";
+import { useRef } from "react";
 import { HiOutlineMenu } from "react-icons/hi";
 import logo from "../../assets/BEEBATLOGO2.svg";
 import DrawerNav from "./DrawerNav";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Nav = () => {
   const servicesRef = useRef(null);
   const aboutUsRef = useRef(null);
   const contactUsRef = useRef(null);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const scrollToRef = (ref) => {
     window.scrollTo({
       top: ref.current.offsetTop,
       behavior: "smooth",
     });
-    updateURL(ref);
   };
 
-  const updateURL = (ref) => {
-    const sectionOffsets = {
-      services: servicesRef.current.offsetTop,
-      about: aboutUsRef.current.offsetTop,
-      contact: contactUsRef.current.offsetTop,
-    };
+  // const updateURL = (ref) => {
+  //   const sectionOffsets = {
+  //     services: servicesRef.current.offsetTop,
+  //     about: aboutUsRef.current.offsetTop,
+  //     contact: contactUsRef.current.offsetTop,
+  //   };
 
-    const scrollY = window.scrollY + 200; // Adjust for nav height
-    let newPath = "/";
+  //   const scrollY = window.scrollY + 200; // Adjust for nav height
+  //   let newPath = "/";
 
-    if (scrollY >= sectionOffsets.contact) {
-      newPath = "/#contact";
-    } else if (scrollY >= sectionOffsets.services) {
-      newPath = "/#services";
-    } else if (scrollY >= sectionOffsets.about) {
-      newPath = "/#about";
-    }
+  //   if (scrollY >= sectionOffsets.contact) {
+  //     newPath = "/#contact";
+  //   } else if (scrollY >= sectionOffsets.services) {
+  //     newPath = "/#services";
+  //   } else if (scrollY >= sectionOffsets.about) {
+  //     newPath = "/#about";
+  //   }
 
-    if (location.pathname + location.hash !== newPath) {
-      navigate(newPath);
-    }
-  };
+  //   if (location.pathname + location.hash !== newPath) {
+  //     navigate(newPath);
+  //   }
+  // };
 
   const { isOpen: drawerIsOpen, onOpen: drawerOnOpen, onClose: drawerOnClose } = useDisclosure();
   const [isLargerThan600] = useMediaQuery('(max-width: 1200px)');
@@ -53,16 +50,6 @@ const Nav = () => {
     drawerOnOpen();
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      updateURL();
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [location]);
 
   return (
     <>
@@ -160,7 +147,7 @@ const Nav = () => {
             flex="0.7"
             justifyContent={"flex-end"}
           >
-            <Link to="mailto:Odufowokelateef6@gmail.com" style={{ outline: "none" }}>
+            <Link to="mailto:beebatmedicalcentre@gmail.com" style={{ outline: "none" }}>
               <Button
                 p="13px 28px"
                 w="max-content"

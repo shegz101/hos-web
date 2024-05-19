@@ -10,7 +10,7 @@ import emergencyServices from "../assets/EmergencyServices.svg";
 
 const Services = () => {
   return (
-    <Box id="services" mt="40px" mx={{base: "15px", md: "100px"}}>
+    <Box id="services" style={{ scrollMarginTop:"100px"}} mt="40px" mx={{base: "15px", md: "100px"}}>
         <Text textAlign={"center"} fontWeight={"600"} mb={"15px"} fontSize={{ base:"20px", md:"30px"}} color="#000000">Our <span style={{ color:"#0085FF"}}>Services</span></Text>
         <Flex flexDirection={{base:"column", md:"row"}} flexWrap={"wrap"} justifyContent="center" gap={"30px 45px"} alignItems={"center"}>
           {[

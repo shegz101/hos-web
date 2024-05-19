@@ -62,7 +62,7 @@ const Footer = () => {
             </Flex>
             <Flex gap="5px">
               <Box pt="3px"><MdMailOutline /></Box>
-              <Text>lateef.odufowoke@yahoo.com</Text>
+              <Text>beebatmedicalcentre@gmail.com</Text>
             </Flex>
             <Flex gap="5px">
               <Box pt="3px"><MdOutlineCallEnd /></Box>

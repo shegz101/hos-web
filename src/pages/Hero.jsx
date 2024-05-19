@@ -39,7 +39,7 @@ const Hero = () => {
           </Text>
 
           {/* Button */}
-          <Link to="mailto:Odufowokelateef6@gmail.com" style={{ outline: "none" }}>
+          <Link to="mailto:beebatmedicalcentre@gmail.com" style={{ outline: "none" }}>
             <Box
               as="button"
               p="13px 28px"

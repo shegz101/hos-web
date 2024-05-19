@@ -62,7 +62,7 @@ const DrawerNav = ({ drawerOnClose, drawerIsOpen }) => {
                         </Link>
                     ))}
                 
-                    <Link to="mailto:Odufowokelateef6@gmail.com" onClick={drawerOnClose} style={{ outline:"none"}}>
+                    <Link to="mailto:beebatmedicalcentre@gmail.com" onClick={drawerOnClose} style={{ outline:"none"}}>
                         <Flex  flexDirection={"column"} gap="24px"  mt="28px" pt="28px">
                             <Box
                             as={"Button"}
